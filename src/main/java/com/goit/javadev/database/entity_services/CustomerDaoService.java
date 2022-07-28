@@ -256,5 +256,17 @@ public class CustomerDaoService implements CrudEntityDAO<Customer> {
             return null;
         }
     }
+
+    public long getMaxId(){
+        long id = -1;
+        try (ResultSet rs = getMaxIdSt.executeQuery()) {
+            rs.next();
+            id = rs.getLong("maxId");
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return id;
+        }
+    }
 }
 

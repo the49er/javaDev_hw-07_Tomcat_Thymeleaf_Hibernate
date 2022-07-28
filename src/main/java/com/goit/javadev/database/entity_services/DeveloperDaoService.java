@@ -291,7 +291,6 @@ public class DeveloperDaoService implements CrudEntityDAO<Developer> {
             return null;
         }
     }
-
     public long getMaxId(){
         long id = -1;
         try (ResultSet rs = getMaxIdSt.executeQuery()) {

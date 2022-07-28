@@ -1,5 +1,6 @@
 package com.goit.javadev.database.entity_services;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface CrudEntityDAO<T> {
     int deleteEntitiesFromListById(long[] ids);          //delete
     boolean deleteById(long id);                         //delete
     boolean clearTable();                                //delete
+    long getMaxId();                                     //read
 }

@@ -2,57 +2,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <title>Update Developer</title>
+    <title>Update Project</title>
     <style>
     body {
-        background-image: url('images/background13.jpg');
+        background-image: url('/templates/images/background13.jpg');
     }
 
     </style>
 </head>
 <body>
 <a href="/dao/index">Main</a>
+<a href="/dao/project">Back</a>
 <div align="center">
-    <h1>Update Existing Developer</h1>
+    <h1>Update Existing Project</h1>
     <br/>
-    <form action="/dao/developer/put" method="post">
+    <form action="/dao/project/put" method="post">
 
         <table border="0" cellpadding="10">
             <tr>
-                <td>Developer ID:</td>
+                <td>Project ID:</td>
                 <td><input name="id" readonly="readonly" th:placeholder="${id}" th:value="${id}" type="text"/></td>
             </tr>
             <tr>
-                <td>Developer Name:</td>
-                <td><input maxlength="255" name="name" required th:placeholder="${developer.name}" type="text"/></td>
+                <td>Project Name:</td>
+                <td><input maxlength="255" name="name" required th:placeholder="${project.name}" type="text"/></td>
             </tr>
             <tr>
-                <td>Age:</td>
-                <td><input max="150" min="1" name="age" required th:placeholder="${developer.age}" type="number"/></td>
+                <td>Project Description:</td>
+                <td><input maxlength="255" name="description" required th:placeholder="${project.description}" type="text"/></td>
             </tr>
             <tr>
-                <td>Gender:</td>
-                <td>
-                    <select name="gender" required>
-                        <option disabled selected value="">Select gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                    </select>
-                </td>
+                <td>Date of Contract:</td>
+                <td><input name="date" required th:placeholder="${date}" type="date"/></td>
             </tr>
             <tr>
-                <td>Salary:</td>
-                <td><input min="1" name="salary" required th:placeholder="${developer.salary}" type="number"/></td>
+                <td>Customer ID:</td>
+                <td><input min="1" name="customerId" required th:max="${maxIdCustomer}" th:placeholder="${project.customerId}"
+                           type="number"/></td>
             </tr>
             <tr>
                 <td>Company ID:</td>
-                <td><input min="1" name="companyId" required th:max="${maxIdCompany}" th:placeholder="${developer.companyId}"
+                <td><input min="1" name="companyId" required th:max="${maxIdCompany}" th:placeholder="${project.companyId}"
                            type="number"/></td>
             </tr>
             <tr>
                 <td colspan="102">
-                    <button type="submit">Update</button>
+                    <button onclick="return confirm('Please confirm update of the Project?');"
+                            id="btnUpdate">Update</button>
                 </td>
             </tr>
         </table>

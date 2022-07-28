@@ -248,4 +248,16 @@ public class SkillDaoService implements CrudEntityDAO<Skill> {
             return false;
         }
     }
+
+    public long getMaxId(){
+        long id = -1;
+        try (ResultSet rs = getMaxIdSt.executeQuery()) {
+            rs.next();
+            id = rs.getLong("maxId");
+            return id;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return id;
+        }
+    }
 }

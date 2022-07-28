@@ -5,13 +5,14 @@
     <title>Update Developer</title>
     <style>
     body {
-        background-image: url('images/background13.jpg');
+        background-image: url('/dao/developer/images/background13.jpg');
     }
 
     </style>
 </head>
 <body>
 <a href="/dao/index">Main</a>
+<a href="/dao/developer">Back</a>
 <div align="center">
     <h1>Update Existing Developer</h1>
     <br/>
@@ -52,7 +53,8 @@
             </tr>
             <tr>
                 <td colspan="102">
-                    <button type="submit">Update</button>
+                    <button onclick="return confirm('Please confirm update of Developer?');"
+                            id="btnUpdate">Update</button>
                 </td>
             </tr>
         </table>

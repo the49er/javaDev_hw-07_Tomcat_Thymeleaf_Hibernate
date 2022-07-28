@@ -5,14 +5,16 @@
     <title>Developer List</title>
     <style>
     body {
-        background-image: url('images/background13.jpg');
+        background-image: url('/dao/images/background13.jpg');
         #background-repeat: no-repeat;
     }
+
 
     </style>
 </head>
 <body>
 <a href="/dao/index">Main</a>
+<a href="/dao/developer">Back</a>
 <div align="center">
     <h1>Developer List</h1>
     <a href="/dao/createDeveloper">Create New Developer</a>
@@ -20,12 +22,12 @@
     <div>
         <table border="1">
             <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>age</th>
-                <th>gender</th>
-                <th>salary</th>
-                <th>companyId</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>Company ID</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -45,7 +47,8 @@
                 <td>
                     <form action="/dao/developer/delete" method="post"></a>
                         <input name="id" th:value="${developer.id}" type="hidden">
-                        <button type="submit">Delete</button>
+                        <button onclick="return confirm('Are you sure you want to delete Developer?');"
+                                id="btnDelete">Delete</button>
                     </form>
                 </td>
             </tr>

@@ -5,26 +5,27 @@
     <title>Project List</title>
     <style>
     body {
-        background-image: url('images/background13.jpg');
+        background-image: url('/dao/images/background13.jpg');
     }
 
     </style>
 </head>
 <body>
 <a href="/dao/index">Main</a>
+<a href="/dao/project">Back</a>
 <div align="center">
     <h1>Project List</h1>
-    <a href="addProject">Add Project</a>
+    <a href="/dao/createProject">Create New Project</a>
     <br/><br/>
     <div>
         <table border="1">
             <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>description</th>
-                <th>date</th>
-                <th>customerId</th>
-                <th>companyId</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Customer ID</th>
+                <th>Company ID</th>
             </tr>
 
             <tr th:each="project : ${projects}">
@@ -34,6 +35,19 @@
                 <td th:utext="${project.date}">...</td>
                 <td th:utext="${project.customerId}">...</td>
                 <td th:utext="${project.companyId}">...</td>
+                <td>
+                    <form action="/dao/project/update" method="post"></a>
+                        <input name="id" th:value="${project.id}" type="hidden">
+                        <input name="date" th:value="${project.date}" type="hidden">
+                        <button type="submit">Edit</button>
+                    </form>
+                <td>
+                    <form action="/dao/project/delete" method="post"></a>
+                        <input name="id" th:value="${project.id}" type="hidden">
+                        <button onclick="return confirm('Are you sure you want to delete the Project?');"
+                                id="btnDelete">Delete</button>
+                    </form>
+                </td>
             </tr>
         </table>
     </div>

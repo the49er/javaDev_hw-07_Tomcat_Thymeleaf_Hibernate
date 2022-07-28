@@ -240,7 +240,6 @@ public class CompanyDaoService implements CrudEntityDAO<Company> {
         }
         return null;
     }
-
     public long getMaxId(){
         long id = -1;
         try (ResultSet rs = getMaxIdSt.executeQuery()) {
