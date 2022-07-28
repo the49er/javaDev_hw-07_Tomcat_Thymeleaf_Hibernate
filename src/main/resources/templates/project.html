@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Project List</title>
+    <style>
+    body {
+        background-image: url('images/background13.jpg');
+    }
+
+    </style>
+</head>
+<body>
+<a href="/dao/index">Main</a>
+<div align="center">
+    <h1>Project List</h1>
+    <a href="addProject">Add Project</a>
+    <br/><br/>
+    <div>
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>date</th>
+                <th>customerId</th>
+                <th>companyId</th>
+            </tr>
+
+            <tr th:each="project : ${projects}">
+                <td th:utext="${project.id}">...</td>
+                <td th:utext="${project.name}">...</td>
+                <td th:utext="${project.description}">...</td>
+                <td th:utext="${project.date}">...</td>
+                <td th:utext="${project.customerId}">...</td>
+                <td th:utext="${project.companyId}">...</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

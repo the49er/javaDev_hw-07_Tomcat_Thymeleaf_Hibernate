@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "CRM",
+    "description": "Customer Relationship Management",
+    "date": "2021-01-24",
+    "customerId": 1,
+    "companyId": 4
+  },
+  {
+    "id": 3,
+    "name": "ERP",
+    "description": "Enterprise Resource Planning",
+    "date": "2021-04-12",
+    "customerId": 2,
+    "companyId": 3
+  },
+  {
+    "id": 4,
+    "name": "SCM",
+    "description": "Software Configuration Management",
+    "date": "2019-05-19",
+    "customerId": 3,
+    "companyId": 2
+  },
+  {
+    "id": 5,
+    "name": "HMC",
+    "description": "Human Capital Management",
+    "date": "2021-09-16",
+    "customerId": 4,
+    "companyId": 1
+  }
+]

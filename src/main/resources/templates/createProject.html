@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>New Project</title>
+    <style>
+    body {
+        background-image: url('images/background13.jpg');
+    }
+
+
+    </style>
+</head>
+<body>
+<a href="/dao/index">Main</a>
+<div align="center">
+    <h1>Create New Developer</h1>
+    <br/>
+    <form action="/dao/project/create" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Developer Name:</td>
+                <td><input maxlength="255" name="name" placeholder="Full Name" required type="text"/></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input max="150" min="1" name="age" placeholder="Age" required type="number"/></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <select name="gender" required>
+                        <option disabled selected value="">Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Salary:</td>
+                <td><input min="1" name="salary" placeholder="Salary" required type="number"/></td>
+            </tr>
+            <tr>
+                <td>Company ID:</td>
+                <td><input min="1" name="companyId" placeholder="Company Id" required th:max="${maxId}" type="number"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="102">
+                    <button type="submit">Create</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>developerList</title>
+  <link rel="stylesheet" th:href=href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"></link>
+</head>
+<body class="container">
+<br/>
+<h1> Список пользователей</h1>
+<br/><br/>
+<div class="with:80%">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Developer Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Salary</th>
+      <th></th>
+      <th>Age</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="developer : ${developers}">
+      <th scope="row" th:text="${developer.id}">1</th>
+      <td th:text="${developer.name}">neo</td>
+      <td th:text="${developer.age}">Otto</td>
+      <td th:text="${developer.gender}">6</td>
+      <td th:text="${developer.salary}">6</td>
+      <td><a th:href="@{/toEdit(id=${developer.id})}">edit</a></td>
+      <td><a th:href="@{/delete(id=${developer.id})}">delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="form-group">
+  <div class="col-sm-2 control-label">
+    <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
+  </div>
+</div>
+
+</body>
+</html>
