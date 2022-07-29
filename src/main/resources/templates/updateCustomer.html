@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Update Customer</title>
+    <style>
+    body {
+        background-image: url('/dao/developer/images/background13.jpg');
+    }
+
+    </style>
+</head>
+<body>
+<a href="/dao/index">Main</a>
+<a href="/dao/customer">Back</a>
+<div align="center">
+    <h1>Update Existing Customer</h1>
+    <br/>
+    <form action="/dao/customer/put" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Customer ID:</td>
+                <td><input name="id" readonly="readonly" th:placeholder="${id}" th:value="${id}" type="text"/></td>
+            </tr>
+            <tr>
+                <td>Customer Name:</td>
+                <td><input maxlength="255" name="name" required th:placeholder="${customer.name}" type="text"/></td>
+            </tr>
+            <tr>
+                <td>Customer Business Sphere:</td>
+                <td><input maxlength="255" name="businessSphere" required th:placeholder="${customer.businessSphere}" type="text"/></td>
+            </tr>
+            <tr>
+                <td colspan="102">
+                    <button onclick="return confirm('Please confirm update of Customer?');"
+                            id="btnUpdate">Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

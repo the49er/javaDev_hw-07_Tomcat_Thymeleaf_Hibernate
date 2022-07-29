@@ -1,33 +1,52 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8" />
-  <title>Welcome</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+  <meta charset="UTF-8"/>
+  <title>Company List</title>
+  <style>
+    body {
+        background-image: url('/dao/images/background13.jpg');
+        #background-repeat: no-repeat;
+    }
+
+
+    </style>
 </head>
 <body>
-<h1>Project Capital Management</h1>
-<h2 th:utext="${message}">..!..</h2>
+<a href="/dao/index">Main</a>
+<div align="center">
+  <h1>Company List</h1>
+  <a href="/dao/createCompany">Create New Company</a>
+  <br/><br/>
+  <div>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
 
-<!--
-
-   In Thymeleaf the equivalent of
-   JSP's ${pageContext.request.contextPath}/edit.html
-   would be @{/edit.html}
-
-   -->
-
-<a href="developer.html">Developer List</a>
-<br>
-<br>
-<a href="project.html">Project List</a>
-<br>
-<br>
-<a href="companyList">Company List</a>
-<br>
-<br>
-<a href="customer">Customer List</a>
-
+      <tr th:each="company : ${companies}">
+        <td th:utext="${company.id}">...</td>
+        <td th:utext="${company.name}">...</td>
+        <td th:utext="${company.specialization}">...</td>
+        <td>
+          <form action="/dao/company/update" method="post"></a>
+            <input name="id" th:value="${company.id}" type="hidden">
+            <button type="submit">Edit</button>
+          </form>
+        <td>
+          <form action="/dao/company/delete" method="post"></a>
+            <input name="id" th:value="${company.id}" type="hidden">
+            <button onclick="return confirm('Are you sure you want to delete Company?');"
+                    id="btnDelete">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 </body>
-
 </html>

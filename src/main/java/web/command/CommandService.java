@@ -1,6 +1,18 @@
 package web.command;
 
 import org.thymeleaf.TemplateEngine;
+import web.command.company.CreateCompany;
+import web.command.company.DeleteCompanyCommand;
+import web.command.company.GetCompanyCommand;
+import web.command.company.PostCompanyCommand;
+import web.command.company.PutCompanyCommand;
+import web.command.company.UpdateCompany;
+import web.command.customer.CreateCustomer;
+import web.command.customer.DeleteCustomerCommand;
+import web.command.customer.GetCustomerCommand;
+import web.command.customer.PostCustomerCommand;
+import web.command.customer.PutCustomerCommand;
+import web.command.customer.UpdateCustomer;
 import web.command.developer.CreateDeveloper;
 import web.command.project.CreateProject;
 import web.command.developer.DeleteDevelopersCommand;
@@ -41,6 +53,20 @@ public class CommandService {
         commands.put("POST /dao/project/update", new UpdateProject());
         commands.put("POST /dao/project/put", new PutProjectCommand());
         commands.put("POST /dao/project/delete", new DeleteProjectCommand());
+
+        commands.put("GET /dao/company", new GetCompanyCommand());
+        commands.put("GET /dao/createCompany", new CreateCompany());
+        commands.put("POST /dao/company/create", new PostCompanyCommand());
+        commands.put("POST /dao/company/update", new UpdateCompany());
+        commands.put("POST /dao/company/put", new PutCompanyCommand());
+        commands.put("POST /dao/company/delete", new DeleteCompanyCommand());
+
+        commands.put("GET /dao/customer", new GetCustomerCommand());
+        commands.put("GET /dao/createCustomer", new CreateCustomer());
+        commands.put("POST /dao/customer/create", new PostCustomerCommand());
+        commands.put("POST /dao/customer/update", new UpdateCustomer());
+        commands.put("POST /dao/customer/put", new PutCustomerCommand());
+        commands.put("POST /dao/customer/delete", new DeleteCustomerCommand());
     }
 
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
