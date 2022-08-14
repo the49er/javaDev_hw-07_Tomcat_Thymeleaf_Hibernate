@@ -5,6 +5,9 @@ import org.flywaydb.core.Flyway;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DataBaseInitService {
@@ -14,7 +17,7 @@ public class DataBaseInitService {
             Properties properties = new Properties();
             properties.load(input);
 
-            String connectionUrl = properties.getProperty("dbUrl");
+            String connectionUrl = properties.getProperty("dbUrlSchema");
             String connectionUser = properties.getProperty("dbUserTest");
             String connectionUserPassword = properties.getProperty("dbUserTest_pass");
 
