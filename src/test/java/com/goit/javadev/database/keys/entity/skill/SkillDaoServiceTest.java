@@ -1,9 +1,9 @@
 package com.goit.javadev.database.keys.entity.skill;
 
-import com.goit.javadev.database.entity_services.SkillDaoService;
-import com.goit.javadev.database.entity.skill.ProgramLang;
-import com.goit.javadev.database.entity.skill.Skill;
-import com.goit.javadev.database.entity.skill.SkillLevel;
+import com.goit.javadev.database.model.entity_services.SkillDaoService;
+import com.goit.javadev.database.model.entity.skill.ProgramLang;
+import com.goit.javadev.database.model.entity.skill.Skill;
+import com.goit.javadev.database.model.entity.skill.SkillLevel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

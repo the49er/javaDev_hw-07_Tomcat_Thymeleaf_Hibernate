@@ -1,7 +1,7 @@
 package com.goit.javadev.database.keys.entity.developer;
 
-import com.goit.javadev.database.entity.developer.Developer;
-import com.goit.javadev.database.entity_services.DeveloperDaoService;
+import com.goit.javadev.database.model.entity.developer.Developer;
+import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

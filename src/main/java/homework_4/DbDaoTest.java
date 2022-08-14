@@ -1,14 +1,14 @@
 package homework_4;
 
 import com.goit.javadev.database.feature.storage.Storage;
-import com.goit.javadev.database.entity.developer.Developer;
-import com.goit.javadev.database.entity_services.DeveloperDaoService;
-import com.goit.javadev.database.entity.project.Project;
-import com.goit.javadev.database.entity_services.ProjectDaoService;
-import com.goit.javadev.database.entity.skill.ProgramLang;
-import com.goit.javadev.database.entity.skill.Skill;
-import com.goit.javadev.database.entity_services.SkillDaoService;
-import com.goit.javadev.database.entity.skill.SkillLevel;
+import com.goit.javadev.database.model.entity.developer.Developer;
+import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
+import com.goit.javadev.database.model.entity.project.Project;
+import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.entity.skill.ProgramLang;
+import com.goit.javadev.database.model.entity.skill.Skill;
+import com.goit.javadev.database.model.entity_services.SkillDaoService;
+import com.goit.javadev.database.model.entity.skill.SkillLevel;
 
 import java.sql.Connection;
 import java.time.LocalDate;

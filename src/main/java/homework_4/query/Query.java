@@ -2,9 +2,9 @@ package homework_4.query;
 
 import com.goit.javadev.database.exception.DaoException;
 import com.goit.javadev.database.feature.storage.Storage;
-import com.goit.javadev.database.entity.developer.Developer;
-import com.goit.javadev.database.entity.skill.ProgramLang;
-import com.goit.javadev.database.entity.skill.SkillLevel;
+import com.goit.javadev.database.model.entity.developer.Developer;
+import com.goit.javadev.database.model.entity.skill.ProgramLang;
+import com.goit.javadev.database.model.entity.skill.SkillLevel;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.Connection;

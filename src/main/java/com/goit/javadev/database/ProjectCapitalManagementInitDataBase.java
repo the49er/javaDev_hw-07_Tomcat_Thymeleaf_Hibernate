@@ -1,16 +1,15 @@
 package com.goit.javadev.database;
 
-import com.goit.javadev.database.entity_services.SkillDaoService;
-import com.goit.javadev.database.feature.storage.StorageTemp;
-import com.goit.javadev.database.entity_services.CompanyDaoService;
-import com.goit.javadev.database.entity_services.CustomerDaoService;
-import com.goit.javadev.database.entity_services.DeveloperDaoService;
-import com.goit.javadev.database.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.entity_services.SkillDaoService;
+import com.goit.javadev.database.model.entity_services.CompanyDaoService;
+import com.goit.javadev.database.model.entity_services.CustomerDaoService;
+import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
+import com.goit.javadev.database.model.entity_services.ProjectDaoService;
 import com.goit.javadev.database.feature.storage.DataBaseInitService;
 import com.goit.javadev.database.feature.storage.Storage;
-import com.goit.javadev.database.entity_relation.keys_services.CompanyCustomerDaoService;
-import com.goit.javadev.database.entity_relation.keys_services.DeveloperProjectDaoService;
-import com.goit.javadev.database.entity_relation.keys_services.DeveloperSkillDaoService;
+import com.goit.javadev.database.model.entity_relation.keys_services.CompanyCustomerDaoService;
+import com.goit.javadev.database.model.entity_relation.keys_services.DeveloperProjectDaoService;
+import com.goit.javadev.database.model.entity_relation.keys_services.DeveloperSkillDaoService;
 
 import java.sql.Connection;
 import java.util.Scanner;
@@ -27,21 +26,10 @@ public class ProjectCapitalManagementInitDataBase {
         String devProjectKeysJsonFileIn = "files/in/developer_project_keys.json"; // developer_project
         String devSkillKeysJsonFileIn = "files/in/developer_skill_keys.json"; // developer_skill
 
-        //input URL, USER and PASSWORD from your DataBase
-        String connectionUrl = "jdbc:mysql://localhost:3306/";
-        String connectionUser = "root";
-        System.out.println("Input password for user: " + connectionUser + "\r");
-        String connectionUserPassword = new Scanner(System.in).nextLine();
-        String pathToFile = "sql/initDB.sql";
-
-        StorageTemp storageTemp = new StorageTemp(connectionUrl, connectionUser,
-                connectionUserPassword, pathToFile);
-        storageTemp.executeUpdates();
-
-
         //DataBaseInitialisation with test_user
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
+        storage.executeUpdates();
         new DataBaseInitService().initDbFlyWay(storage);
 
         //population of companies table

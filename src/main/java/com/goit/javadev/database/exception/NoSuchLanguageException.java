@@ -1,6 +1,6 @@
 package com.goit.javadev.database.exception;
 
-import com.goit.javadev.database.entity.skill.ProgramLang;
+import com.goit.javadev.database.model.entity.skill.ProgramLang;
 
 public class NoSuchLanguageException extends RuntimeException {
     public NoSuchLanguageException(String str) {
