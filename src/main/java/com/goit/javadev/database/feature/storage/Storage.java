@@ -1,6 +1,5 @@
 package com.goit.javadev.database.feature.storage;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -17,7 +16,7 @@ public class Storage {
     String pathToDbInitFile;
 
     private Storage() {
-        try (InputStream input = new FileInputStream("C:/Java_GoIt/JavaDev/HomeWorks/06_hw-Tomcat-Thymeleaf/tomcat_thymeleaf/src/main/resources/db.properties")){
+        try (InputStream input = Storage.class.getClassLoader().getResourceAsStream("db.properties")){
             Properties properties = new Properties();
             properties.load(input);
 
@@ -91,3 +90,6 @@ public class Storage {
         return -1;
     }
 }
+
+
+

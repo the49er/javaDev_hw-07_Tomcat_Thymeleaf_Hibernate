@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 public class CompanyDaoService implements CrudEntityDAO<Company> {
-    private static final String TABLE_NAME = "`homework_4`.";
+    private static final String TABLE_NAME = "`homework_6`.";
     PreparedStatement insertSt;
     PreparedStatement updateEntityFieldsSt;
     PreparedStatement getEntityByIdSt;
@@ -32,7 +32,7 @@ public class CompanyDaoService implements CrudEntityDAO<Company> {
     public CompanyDaoService(Connection connection) {
         try {
             insertSt = connection.prepareStatement(
-                    "INSERT INTO `homework_4`.companies (name, specialization) VALUES (?, ?)"
+                    "INSERT INTO `homework_6`.companies (name, specialization) VALUES (?, ?)"
             );
 
             updateEntityFieldsSt = connection.prepareStatement(
@@ -40,11 +40,11 @@ public class CompanyDaoService implements CrudEntityDAO<Company> {
             );
 
             clearTableSt = connection.prepareStatement(
-                    "DELETE FROM `homework_4`.companies"
+                    "DELETE FROM `homework_6`.companies"
             );
 
             deleteById = connection.prepareStatement(
-                    "DELETE FROM `homework_4`.companies WHERE id = ?"
+                    "DELETE FROM `homework_6`.companies WHERE id = ?"
             );
 
             getMaxIdSt = connection.prepareStatement(

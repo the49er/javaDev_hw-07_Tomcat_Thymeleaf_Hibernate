@@ -1,4 +1,4 @@
-USE homework_4;
+USE homework_6;
 ALTER TABLE developers
 ADD CONSTRAINT employer_company_id_fk
 FOREIGN KEY (company_id)

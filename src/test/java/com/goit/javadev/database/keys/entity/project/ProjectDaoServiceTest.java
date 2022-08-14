@@ -27,8 +27,8 @@ public class ProjectDaoServiceTest {
     @BeforeEach
     public void beforeEach () throws SQLException {
         final String jdbc = "jdbc:h2:mem:./testDataBase;DB_CLOSE_DELAY=-1";
-        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_4`";
-        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_4`.projects (" +
+        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_6`";
+        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_6`.projects (" +
                 "id IDENTITY PRIMARY KEY, name VARCHAR(100), description VARCHAR(100)," +
                 "date_contract DATE, customer_id INT, company_id INT)";
         connection = DriverManager.getConnection(jdbc);

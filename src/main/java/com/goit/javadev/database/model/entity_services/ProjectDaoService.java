@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProjectDaoService implements CrudEntityDAO<Project> {
 
-    private static final String TABLE_NAME = "`homework_4`.projects";
+    private static final String TABLE_NAME = "`homework_6`.projects";
     PreparedStatement insertSt;
     PreparedStatement updateEntityFieldsSt;
     PreparedStatement getEntityByIdSt;

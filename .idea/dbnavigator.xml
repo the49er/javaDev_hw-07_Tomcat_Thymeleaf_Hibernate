@@ -46,7 +46,9 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__create_a_table_skills.sql" connection-id="96ab8c74-b8f1-4b55-a7f8-50dbab75334d" session-id="MAIN" current-schema="homework_4" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V2__create_a_table_developers.sql" connection-id="96ab8c74-b8f1-4b55-a7f8-50dbab75334d" session-id="MAIN" current-schema="homework_4" />
     <mapping file-url="file://$PROJECT_DIR$/sql/initDB.sql" connection-id="96ab8c74-b8f1-4b55-a7f8-50dbab75334d" session-id="MAIN" current-schema="mysql" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V10__add_costraint_developers_company_fk.sql" connection-id="96ab8c74-b8f1-4b55-a7f8-50dbab75334d" session-id="MAIN" current-schema="homework_4" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -90,7 +92,7 @@
           <deprecated-pwd value="cGx5V29vZCExNzAx" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

@@ -28,8 +28,8 @@ public class SkillDaoServiceTest {
     @BeforeEach
     public void beforeEach () throws SQLException {
         final String jdbc = "jdbc:h2:mem:./testDataBase;DB_CLOSE_DELAY=-1";
-        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_4`";
-        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_4`.skills (" +
+        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_6`";
+        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_6`.skills (" +
                 "id IDENTITY PRIMARY KEY, programming_lang VARCHAR(100), level VARCHAR(100))";
         connection = DriverManager.getConnection(jdbc);
         connection.createStatement().executeUpdate(sqlCreateDataBase);

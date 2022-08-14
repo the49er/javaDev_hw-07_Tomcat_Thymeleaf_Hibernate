@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SkillDaoService implements CrudEntityDAO<Skill> {
 
-    private static final String TABLE_NAME = "`homework_4`.skills";
+    private static final String TABLE_NAME = "`homework_6`.skills";
     PreparedStatement insertSt;
     PreparedStatement updateEntityFieldsSt;
     PreparedStatement getEntityByIdSt;

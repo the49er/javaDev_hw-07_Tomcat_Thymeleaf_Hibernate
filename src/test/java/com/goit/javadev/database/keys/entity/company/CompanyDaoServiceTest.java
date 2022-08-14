@@ -25,8 +25,8 @@ public class CompanyDaoServiceTest {
     @BeforeEach
     public void beforeEach () throws SQLException {
         final String jdbc = "jdbc:h2:mem:./testDataBase;DB_CLOSE_DELAY=-1";
-        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_4`";
-        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_4`.companies (" +
+        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_6`";
+        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_6`.companies (" +
                 "id IDENTITY PRIMARY KEY, name VARCHAR(100), specialization VARCHAR(100))";
         connection = DriverManager.getConnection(jdbc);
         connection.createStatement().executeUpdate(sqlCreateDataBase);
@@ -42,6 +42,7 @@ public class CompanyDaoServiceTest {
 
     @AfterEach
     public void afterEach() throws SQLException {
+        connection.createStatement().executeUpdate("DROP SCHEMA IF EXISTS `homework_6` CASCADE");
         connection.close();
     }
 

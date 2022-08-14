@@ -25,7 +25,7 @@ public class DeveloperProjectDaoService implements ManyToMany<DeveloperProjectKe
     PreparedStatement deleteSt;
     PreparedStatement getMaxIdSt;
     PreparedStatement getAllSt;
-    private static final String TABLE_NAME = "`homework_4`.developer_project";
+    private static final String TABLE_NAME = "`homework_6`.developer_project";
 
     public DeveloperProjectDaoService(Connection connection) {
         try {

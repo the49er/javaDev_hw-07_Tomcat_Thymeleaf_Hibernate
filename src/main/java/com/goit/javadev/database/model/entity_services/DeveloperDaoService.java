@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class DeveloperDaoService implements CrudEntityDAO<Developer> {
 
-    private static final String TABLE_NAME = "`homework_4`.developers";
+    private static final String TABLE_NAME = "`homework_6`.developers";
     PreparedStatement insertSt;
     PreparedStatement updateEntityFieldsSt;
     PreparedStatement updateNameFieldSt;

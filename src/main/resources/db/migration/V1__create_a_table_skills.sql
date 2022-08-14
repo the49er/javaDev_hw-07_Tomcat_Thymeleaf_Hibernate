@@ -1,4 +1,4 @@
-USE homework_4;
+USE homework_6;
 CREATE TABLE skills (
 id BIGINT NOT NULL AUTO_INCREMENT,
 programming_lang VARCHAR(50) NOT NULL,

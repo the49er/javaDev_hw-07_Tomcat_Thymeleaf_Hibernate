@@ -25,7 +25,7 @@ public class CompanyCustomerDaoService implements ManyToMany<CompanyCustomerKey>
     PreparedStatement deleteSt;
     PreparedStatement getMaxIdSt;
     PreparedStatement getAllSt;
-    private static final String TABLE_NAME = "`homework_4`.company_customer";
+    private static final String TABLE_NAME = "`homework_6`.company_customer";
 
     public CompanyCustomerDaoService(Connection connection) {
         try {

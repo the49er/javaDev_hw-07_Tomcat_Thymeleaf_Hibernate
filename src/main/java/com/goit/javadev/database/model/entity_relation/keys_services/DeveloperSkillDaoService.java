@@ -25,7 +25,7 @@ public class DeveloperSkillDaoService implements ManyToMany<DeveloperSkillKey> {
     PreparedStatement deleteSt;
     PreparedStatement getMaxIdSt;
     PreparedStatement getAllSt;
-    private static final String TABLE_NAME = "`homework_4`.developer_skill";
+    private static final String TABLE_NAME = "`homework_6`.developer_skill";
 
     public DeveloperSkillDaoService(Connection connection) {
         try {

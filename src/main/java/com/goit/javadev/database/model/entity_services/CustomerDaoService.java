@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CustomerDaoService implements CrudEntityDAO<Customer> {
 
-    private static final String TABLE_NAME = "`homework_4`.customers";
+    private static final String TABLE_NAME = "`homework_6`.customers";
     PreparedStatement insertSt;
     PreparedStatement updateContractEntityFieldsSt;
     PreparedStatement updateContractNameFieldSt;

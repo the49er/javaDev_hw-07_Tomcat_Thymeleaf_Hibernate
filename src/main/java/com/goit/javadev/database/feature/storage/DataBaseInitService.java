@@ -13,7 +13,7 @@ import java.util.Properties;
 public class DataBaseInitService {
 
     public void initDbFlyWay(Storage storage) {
-        try (InputStream input = new FileInputStream("C:/Java_GoIt/JavaDev/HomeWorks/06_hw-Tomcat-Thymeleaf/tomcat_thymeleaf/src/main/resources/db.properties")) {
+        try (InputStream input = DataBaseInitService.class.getClassLoader().getResourceAsStream("db.properties")){
             Properties properties = new Properties();
             properties.load(input);
 
@@ -30,5 +30,22 @@ public class DataBaseInitService {
         }catch (IOException ex){
             ex.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        try (InputStream input = DataBaseInitService.class.getClassLoader().getResourceAsStream("db.properties")) {
+            Properties properties = new Properties();
+            properties.load(input);
+
+            String connectionUrl = properties.getProperty("dbUrlSchema");
+            String connectionUser = properties.getProperty("dbUserTest");
+            String connectionUserPassword = properties.getProperty("dbUserTest_pass");
+            System.out.println(connectionUrl);
+            System.out.println(connectionUser);
+            System.out.println(connectionUserPassword);
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
