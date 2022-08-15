@@ -16,7 +16,7 @@ public class Storage {
     String pathToDbInitFile;
 
     private Storage() {
-        try (InputStream input = Storage.class.getClassLoader().getResourceAsStream("db.properties")){
+        try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")){
             Properties properties = new Properties();
             properties.load(input);
 

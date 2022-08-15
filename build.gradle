@@ -57,6 +57,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/net.sf.opencsv/opencsv
     implementation group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
+
+    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+    implementation 'org.hibernate.orm:hibernate-core:6.1.0.Final'
 }
 
 test {

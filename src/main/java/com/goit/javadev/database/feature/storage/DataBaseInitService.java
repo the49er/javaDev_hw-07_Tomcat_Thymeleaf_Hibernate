@@ -2,18 +2,14 @@ package com.goit.javadev.database.feature.storage;
 
 import org.flywaydb.core.Flyway;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class DataBaseInitService {
 
     public void initDbFlyWay(Storage storage) {
-        try (InputStream input = DataBaseInitService.class.getClassLoader().getResourceAsStream("db.properties")){
+        try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")){
             Properties properties = new Properties();
             properties.load(input);
 
@@ -23,7 +19,9 @@ public class DataBaseInitService {
 
             Flyway flyway = Flyway
                     .configure()
-                    .dataSource(connectionUrl, connectionUser, connectionUserPassword)
+                    .dataSource(connectionUrl,
+                                connectionUser,
+                                connectionUserPassword)
                     .load();
 
             flyway.migrate();
