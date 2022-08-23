@@ -6,12 +6,16 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/homework_6?serverTimezone=UTC
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/homework_7?serverTimezone=UTC
         </property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">plyWood!1701</property>
 
         <!--<mapping resource="Developer.hbm.xml"/>-->
         <mapping class="com.goit.javadev.database.model.developer.Developer"/>
+        <mapping class="com.goit.javadev.database.model.customer.Customer"/>
+        <mapping class="com.goit.javadev.database.model.company.Company"/>
+        <mapping class="com.goit.javadev.database.model.skill.Skill"/>
+        <mapping class="com.goit.javadev.database.model.project.Project"/>
     </session-factory>
 </hibernate-configuration>

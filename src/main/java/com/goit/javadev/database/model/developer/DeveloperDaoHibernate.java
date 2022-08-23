@@ -1,20 +1,19 @@
 package com.goit.javadev.database.model.developer;
 
 import com.goit.javadev.database.feature.storage.HibernateUtil;
-import com.goit.javadev.database.model.CrudEntityHibernateDAO;
-import com.google.gson.Gson;
+import com.goit.javadev.database.feature.storage.Storage;
+import com.goit.javadev.database.model.CrudEntityDaoHibernate;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.project.Project;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
+import org.hibernate.query.Query;
+
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> {
+public class DeveloperDaoHibernate implements CrudEntityDaoHibernate<Developer> {
     private final HibernateUtil util = HibernateUtil.getInstance();
-
 
 
     @Override
@@ -26,35 +25,6 @@ public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> 
         session.close();
     }
 
-    @Override
-    public void insertNewEntities(List<Developer> element) {
-        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        for (Developer dev: element) {
-            session.persist(dev);
-        }
-        transaction.commit();
-        session.close();
-    }
-
-    @Override
-    public void insertEntitiesFromJsonFile(String jsonFilePath) {
-        Gson gson = new Gson();
-        String inString = null;
-        try {
-            inString = String.join(
-                    "\n",
-                    Files.readAllLines(Paths.get(jsonFilePath)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        com.goit.javadev.database.model.developer.Developer[] developers = gson.fromJson(inString, com.goit.javadev.database.model.developer.Developer[].class);
-        List<Developer> developerList =
-                Arrays.stream(developers)
-                        .collect(Collectors.toList());
-
-        insertNewEntities(developerList);
-    }
 
     @Override
     public void updateEntityFieldsById(Developer element, long id) {
@@ -74,7 +44,7 @@ public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> 
     @Override
     public Developer getEntityById(long id) {
         Session session = util.getSessionFactory().openSession();
-        Developer developer = session.get(Developer.class, 10l);
+        Developer developer = session.get(Developer.class, id);
         session.close();
         return developer;
     }
@@ -87,10 +57,6 @@ public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> 
         return result;
     }
 
-    @Override
-    public void deleteEntitiesFromListById(long[] ids) {
-
-    }
 
     @Override
     public void deleteById(long id) {
@@ -105,6 +71,13 @@ public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> 
 
     @Override
     public void clearTable() {
+        Session session = util.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("DELETE FROM Developer");
+        query.executeUpdate();
+        transaction.commit();
+        session.close();
+
 
     }
 
@@ -122,15 +95,38 @@ public class DeveloperDaoHibernate implements CrudEntityHibernateDAO<Developer> 
 
     public static void main(String[] args) {
         DeveloperDaoHibernate developerDaoHibernate = new DeveloperDaoHibernate();
+        CompanyDaoJDBC companyDaoJDBC = new CompanyDaoJDBC(Storage.getInstance().getConnection());
+
+        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+
+        Project project = new Project();
+        project.setName("NewProject");
+        project.setDescription("Test1");
+        project.setDate(LocalDate.now());
+        project.setCustomerId(1);
+        project.setCompanyId(2);
+
+
         Developer developer = new Developer();
         developer.setName("newName");
-        developer.setAge(25);
+        developer.setAge(99);
         developer.setGender(Developer.Gender.MALE);
-        developer.setSalary(5000);
-        developer.setCompanyId(2);
-        developerDaoHibernate.updateEntityFieldsById(developer, 1);
-        System.out.println(developerDaoHibernate.getAllEntities());
+        developer.setSalary(50000);
+        developer.setCompanyId(5);
+
+        Transaction tx = session.beginTransaction();
+        session.persist(project);
+        session.persist(developer);
+
+        tx.commit();
+        session.close();
+
+        //developerDaoHibernate.insertNewEntity(developer);
+        //developerDaoHibernate.updateEntityFieldsById(developer, 1);
+        //System.out.println(developerDaoHibernate.getAllEntities());
 
         System.out.println(developerDaoHibernate.getMaxId());
+        System.out.println(developerDaoHibernate.getEntityById(developerDaoHibernate.getMaxId()));
+        //developerDaoHibernate.clearTable();
     }
 }

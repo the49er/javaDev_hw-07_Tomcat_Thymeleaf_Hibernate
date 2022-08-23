@@ -1,7 +1,7 @@
 package com.goit.javadev.database.controller.command.customer;
 
-import com.goit.javadev.database.model.entity.customer.Customer;
-import com.goit.javadev.database.model.entity_services.CustomerDaoService;
+import com.goit.javadev.database.model.customer.Customer;
+import com.goit.javadev.database.model.customer.CustomerDaoService;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import com.goit.javadev.database.controller.command.Command;

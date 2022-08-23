@@ -1,4 +1,4 @@
-USE homework_6;
+USE homework_7;
 CREATE TABLE company_customer (
 company_id BIGINT NULL,
 customer_id BIGINT NULL,

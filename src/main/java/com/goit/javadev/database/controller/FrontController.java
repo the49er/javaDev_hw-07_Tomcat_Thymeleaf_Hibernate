@@ -2,6 +2,7 @@ package com.goit.javadev.database.controller;
 
 import com.goit.javadev.database.controller.command.CommandService;
 import com.goit.javadev.database.feature.storage.DataBaseInitService;
+import com.goit.javadev.database.feature.storage.HibernateUtil;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
@@ -20,7 +21,7 @@ public class FrontController extends HttpServlet {
 
     @Override
     public void init() {
-        new DataBaseInitService().initDbFlyWay(Storage.getInstance());
+        new DataBaseInitService().initDbFlyWay(HibernateUtil.getInstance());
 
         engine = new TemplateEngine();
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();

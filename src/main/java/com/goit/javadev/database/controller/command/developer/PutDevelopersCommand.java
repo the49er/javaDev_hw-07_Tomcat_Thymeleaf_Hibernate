@@ -1,7 +1,9 @@
 package com.goit.javadev.database.controller.command.developer;
 
-import com.goit.javadev.database.model.entity.developer.Developer;
-import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
+import com.goit.javadev.database.model.developer.Developer;
+import com.goit.javadev.database.model.developer.DeveloperDaoHibernate;
+import com.goit.javadev.database.model.developer.DeveloperDaoJDBC;
+
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import com.goit.javadev.database.controller.command.Command;
@@ -14,9 +16,6 @@ import java.sql.Connection;
 public class PutDevelopersCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
-        DeveloperDaoService developerDaoService = new DeveloperDaoService(connection);
 
         Developer developer = new Developer();
 
@@ -33,7 +32,7 @@ public class PutDevelopersCommand implements Command {
         developer.setSalary(salary);
         developer.setCompanyId(companyId);
 
-        developerDaoService.updateEntityFieldsById(developer, id);
+        new DeveloperDaoHibernate().updateEntityFieldsById(developer, id);
 
         resp.sendRedirect("/dao/developer");
     }

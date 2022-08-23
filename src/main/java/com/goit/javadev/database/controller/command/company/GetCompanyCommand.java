@@ -1,6 +1,7 @@
 package com.goit.javadev.database.controller.command.company;
 
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -15,14 +16,12 @@ import java.util.Map;
 public class GetCompanyCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
         resp.setContentType("text/html");
 
         Context simpleContext = new Context(
                 req.getLocale(),
-                Map.of("companies", new CompanyDaoService(connection).getAllEntities())
+                Map.of("companies", new CompanyDaoHibernate().getAllEntities())
         );
 
         engine.process("company/company", simpleContext, resp.getWriter());

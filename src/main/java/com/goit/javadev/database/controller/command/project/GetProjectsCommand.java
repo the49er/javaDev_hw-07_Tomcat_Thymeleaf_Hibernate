@@ -1,7 +1,7 @@
 package com.goit.javadev.database.controller.command.project;
 
 import com.goit.javadev.database.controller.command.Command;
-import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -22,7 +22,7 @@ public class GetProjectsCommand implements Command {
 
         Context simpleContext = new Context(
                 req.getLocale(),
-                Map.of("projects", new ProjectDaoService(connection).getAllEntities())
+                Map.of("projects", new ProjectDaoJDBC(connection).getAllEntities())
         );
 
         engine.process("project/project", simpleContext, resp.getWriter());

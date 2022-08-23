@@ -1,7 +1,8 @@
 package com.goit.javadev.database.controller.command.company;
 
-import com.goit.javadev.database.model.entity.company.Company;
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
+import com.goit.javadev.database.model.company.Company;
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import com.goit.javadev.database.controller.command.Command;
@@ -14,9 +15,6 @@ import java.sql.Connection;
 public class PutCompanyCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
-        CompanyDaoService companyDaoService = new CompanyDaoService(connection);
 
         Company company = new Company();
 
@@ -28,7 +26,7 @@ public class PutCompanyCommand implements Command {
         company.setName(name);
         company.setSpecialization(specialization);
 
-        companyDaoService.updateEntityFieldsById(company, id);
+        new CompanyDaoHibernate().updateEntityFieldsById(company, id);
 
         resp.sendRedirect("/dao/company");
     }
