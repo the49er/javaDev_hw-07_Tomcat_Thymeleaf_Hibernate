@@ -1,7 +1,7 @@
 package com.goit.javadev.database.keys.entity.company;
 
-import com.goit.javadev.database.model.entity.company.Company;
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
+import com.goit.javadev.database.model.company.Company;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class CompanyDaoServiceTest {
     private Connection connection;
-    private CompanyDaoService companyDaoService;
+    private CompanyDaoJDBC companyDaoService;
     Company companyTest1;
     Company companyTest2;
     Company companyTest3;
@@ -25,13 +25,13 @@ public class CompanyDaoServiceTest {
     @BeforeEach
     public void beforeEach () throws SQLException {
         final String jdbc = "jdbc:h2:mem:./testDataBase;DB_CLOSE_DELAY=-1";
-        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_6`";
-        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_6`.companies (" +
+        String sqlCreateDataBase = "CREATE SCHEMA IF NOT EXISTS `homework_7`";
+        String sqlCreateTableCompany = "CREATE TABLE IF NOT EXISTS `homework_7`.companies (" +
                 "id IDENTITY PRIMARY KEY, name VARCHAR(100), specialization VARCHAR(100))";
         connection = DriverManager.getConnection(jdbc);
         connection.createStatement().executeUpdate(sqlCreateDataBase);
         connection.createStatement().executeUpdate(sqlCreateTableCompany);
-        companyDaoService = new CompanyDaoService(connection);
+        companyDaoService = new CompanyDaoJDBC(connection);
         companyTest1 = new Company(1, "TestName1", "TestDescription");
         companyTest2 = new Company(2, null, "TestDescription");
         companyTest3 = new Company(3, "TestName3", null);

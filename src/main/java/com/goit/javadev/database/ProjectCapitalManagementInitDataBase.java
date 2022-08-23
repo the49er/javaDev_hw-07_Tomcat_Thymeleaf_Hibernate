@@ -1,18 +1,18 @@
 package com.goit.javadev.database;
 
-import com.goit.javadev.database.model.entity_services.SkillDaoService;
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
-import com.goit.javadev.database.model.entity_services.CustomerDaoService;
-import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
-import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.feature.storage.HibernateUtil;
+import com.goit.javadev.database.model.developer.DeveloperDaoJDBC;
+import com.goit.javadev.database.model.skill.SkillDaoJDBC;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.customer.CustomerDaoService;
+import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.DataBaseInitService;
 import com.goit.javadev.database.feature.storage.Storage;
-import com.goit.javadev.database.model.entity_relation.keys_services.CompanyCustomerDaoService;
-import com.goit.javadev.database.model.entity_relation.keys_services.DeveloperProjectDaoService;
-import com.goit.javadev.database.model.entity_relation.keys_services.DeveloperSkillDaoService;
+import com.goit.javadev.database.model.entity_relation.company_customer.CompanyCustomerDaoJDBC;
+import com.goit.javadev.database.model.entity_relation.developer_project.DeveloperProjectDaoJDBC;
+import com.goit.javadev.database.model.entity_relation.developer_skill.DeveloperSkillDaoJDBC;
 
 import java.sql.Connection;
-import java.util.Scanner;
 
 public class ProjectCapitalManagementInitDataBase {
     public static void main(String[] args) {
@@ -30,14 +30,16 @@ public class ProjectCapitalManagementInitDataBase {
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
         storage.executeUpdates();
-        new DataBaseInitService().initDbFlyWay(storage);
+
+        new DataBaseInitService().initDbFlyWay(HibernateUtil.getInstance());
+
 
         //population of companies table
-        CompanyDaoService companyDbService = new CompanyDaoService(connection);
+        CompanyDaoJDBC companyDbService = new CompanyDaoJDBC(connection);
         companyDbService.insertEntitiesFromJsonFile(companiesJsonFileIn);
 
         //population of developers table
-        DeveloperDaoService developerDaoService = new DeveloperDaoService(connection);
+        DeveloperDaoJDBC developerDaoService = new DeveloperDaoJDBC(connection);
         developerDaoService.insertEntitiesFromJsonFile(developersJsonFileIn);
 
         //population of customers table
@@ -45,23 +47,23 @@ public class ProjectCapitalManagementInitDataBase {
         customerDaoService.insertEntitiesFromJsonFile(customersJsonFileIn);
 
         //population of projects table
-        ProjectDaoService projectDaoService = new ProjectDaoService(connection);
-        projectDaoService.insertEntitiesFromJsonFile(projectsJsonFileIn);
+        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
+        projectDaoJDBC.insertEntitiesFromJsonFile(projectsJsonFileIn);
 
         //population of skills table
-        SkillDaoService skillDaoService = new SkillDaoService(connection);
-        skillDaoService.insertEntitiesFromJsonFile(skillsJsonFileIn);
+        SkillDaoJDBC skillDaoJDBC = new SkillDaoJDBC(connection);
+        skillDaoJDBC.insertEntitiesFromJsonFile(skillsJsonFileIn);
 
         //population of company_customer table (keys)
-        CompanyCustomerDaoService companyCustomerDaoService = new CompanyCustomerDaoService(connection);
-        companyCustomerDaoService.insertKeysFromJsonFile(compCustomerKeysJsonFileIn);
+        CompanyCustomerDaoJDBC companyCustomerDaoJDBC = new CompanyCustomerDaoJDBC(connection);
+        companyCustomerDaoJDBC.insertKeysFromJsonFile(compCustomerKeysJsonFileIn);
 
         //population of developer_project table (keys)
-        DeveloperProjectDaoService developerProjectDaoService = new DeveloperProjectDaoService(connection);
-        developerProjectDaoService.insertKeysFromJsonFile(devProjectKeysJsonFileIn);
+        DeveloperProjectDaoJDBC developerProjectDaoJDBC = new DeveloperProjectDaoJDBC(connection);
+        developerProjectDaoJDBC.insertKeysFromJsonFile(devProjectKeysJsonFileIn);
 
         //population of developer_skill table (keys)
-        DeveloperSkillDaoService developerSkillDaoService = new DeveloperSkillDaoService(connection);
-        developerSkillDaoService.insertKeysFromJsonFile(devSkillKeysJsonFileIn);
+        DeveloperSkillDaoJDBC developerSkillDaoJDBC = new DeveloperSkillDaoJDBC(connection);
+        developerSkillDaoJDBC.insertKeysFromJsonFile(devSkillKeysJsonFileIn);
     }
 }

@@ -1,6 +1,7 @@
 package com.goit.javadev.database.controller.command.company;
 
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -16,19 +17,16 @@ public class UpdateCompany implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
         resp.setContentType("text/html");
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
-        CompanyDaoService companyDaoService = new CompanyDaoService(connection);
-
+        CompanyDaoHibernate companyDaoHibernate = new CompanyDaoHibernate();
         String id = req.getParameter("id");
 
         Context simpleContext = new Context(
                 req.getLocale(),
                 Map.of(
                         "id", id,
-                        "company",companyDaoService.getEntityById(Long.parseLong(id)),
-                        "maxIdCompany", companyDaoService.getMaxId()
+                        "company",companyDaoHibernate.getEntityById(Long.parseLong(id)),
+                        "maxIdCompany", companyDaoHibernate.getMaxId()
                 )
         );
 

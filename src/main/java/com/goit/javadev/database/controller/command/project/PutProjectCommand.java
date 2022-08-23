@@ -1,7 +1,7 @@
 package com.goit.javadev.database.controller.command.project;
 
-import com.goit.javadev.database.model.entity.project.Project;
-import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.project.Project;
+import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import com.goit.javadev.database.controller.command.Command;
@@ -18,7 +18,7 @@ public class PutProjectCommand implements Command {
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
 
-        ProjectDaoService projectDaoService = new ProjectDaoService(connection);
+        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
         Project project = new Project();
 
         long id = Long.parseLong(req.getParameter("id"));
@@ -34,7 +34,7 @@ public class PutProjectCommand implements Command {
         project.setCustomerId(customerId);
         project.setCompanyId(companyId);
 
-        projectDaoService.updateEntityFieldsById(project, id);
+        projectDaoJDBC.updateEntityFieldsById(project, id);
 
         resp.sendRedirect("/dao/project");
     }

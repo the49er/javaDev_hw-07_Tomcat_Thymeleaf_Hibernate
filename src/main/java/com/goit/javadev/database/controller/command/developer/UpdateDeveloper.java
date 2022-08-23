@@ -1,7 +1,9 @@
 package com.goit.javadev.database.controller.command.developer;
 
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
-import com.goit.javadev.database.model.entity_services.DeveloperDaoService;
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
+import com.goit.javadev.database.model.developer.DeveloperDaoHibernate;
+import com.goit.javadev.database.model.developer.DeveloperDaoJDBC;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -17,10 +19,8 @@ public class UpdateDeveloper implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
         resp.setContentType("text/html");
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
-        DeveloperDaoService developerDaoService = new DeveloperDaoService(connection);
+        DeveloperDaoHibernate developerDaoHibernate = new DeveloperDaoHibernate();
 
         String id = req.getParameter("id");
 
@@ -28,9 +28,9 @@ public class UpdateDeveloper implements Command {
                 req.getLocale(),
                 Map.of(
                         "id", id,
-                        "developer",developerDaoService.getEntityById(Long.parseLong(id)),
-                        "maxIdCompany", new CompanyDaoService(connection).getMaxId(),
-                        "maxIdDeveloper", developerDaoService.getMaxId()
+                        "developer",developerDaoHibernate.getEntityById(Long.parseLong(id)),
+                        "maxIdCompany", new CompanyDaoHibernate().getMaxId(),
+                        "maxIdDeveloper", developerDaoHibernate.getMaxId()
                 )
         );
 

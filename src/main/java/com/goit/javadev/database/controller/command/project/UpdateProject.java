@@ -1,8 +1,8 @@
 package com.goit.javadev.database.controller.command.project;
 
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
-import com.goit.javadev.database.model.entity_services.CustomerDaoService;
-import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.customer.CustomerDaoService;
+import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -22,7 +22,7 @@ public class UpdateProject implements Command {
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
 
-        ProjectDaoService projectDaoService = new ProjectDaoService(connection);
+        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
 
         String id = req.getParameter("id");
         LocalDate date = LocalDate.parse(req.getParameter("date"));
@@ -31,10 +31,10 @@ public class UpdateProject implements Command {
                 req.getLocale(),
                 Map.of(
                         "id", id,
-                        "project",projectDaoService.getEntityById(Long.parseLong(id)),
-                        "maxIdCompany", new CompanyDaoService(connection).getMaxId(),
+                        "project", projectDaoJDBC.getEntityById(Long.parseLong(id)),
+                        "maxIdCompany", new CompanyDaoJDBC(connection).getMaxId(),
                         "maxIdCustomer", new CustomerDaoService(connection).getMaxId(),
-                        "maxIdProject", projectDaoService.getMaxId(),
+                        "maxIdProject", projectDaoJDBC.getMaxId(),
                         "date", date
                 )
         );

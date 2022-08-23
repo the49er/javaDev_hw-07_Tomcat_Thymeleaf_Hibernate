@@ -1,4 +1,4 @@
-USE homework_6;
+USE homework_7;
 ALTER TABLE projects
 ADD CONSTRAINT company_id_fk
 FOREIGN KEY (company_id)

@@ -1,6 +1,6 @@
 package com.goit.javadev.database.exception;
 
-import com.goit.javadev.database.model.entity.skill.SkillLevel;
+import com.goit.javadev.database.model.skill.SkillLevel;
 
 public class NoSuchLevelException extends RuntimeException {
     public NoSuchLevelException(String str) {

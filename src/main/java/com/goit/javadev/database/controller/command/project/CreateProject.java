@@ -1,8 +1,8 @@
 package com.goit.javadev.database.controller.command.project;
 
 import com.goit.javadev.database.controller.command.Command;
-import com.goit.javadev.database.model.entity_services.CompanyDaoService;
-import com.goit.javadev.database.model.entity_services.CustomerDaoService;
+import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.customer.CustomerDaoService;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -25,7 +25,7 @@ public class CreateProject implements Command {
                 req.getLocale(),
                 Map.of(
                         "maxIdCustomer", new CustomerDaoService(connection).getMaxId(),
-                        "maxIdCompany", new CompanyDaoService(connection).getMaxId(),
+                        "maxIdCompany", new CompanyDaoJDBC(connection).getMaxId(),
                         "date", LocalDate.now(),
                         "dateString", LocalDate.now().toString()
                 )

@@ -1,4 +1,4 @@
-USE homework_6;
+USE homework_7;
 CREATE TABLE developer_project (
 developer_id BIGINT NULL,
 project_id BIGINT NULL,

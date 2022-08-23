@@ -1,4 +1,4 @@
-USE homework_6;
+USE homework_7;
 CREATE TABLE developers (
 id BIGINT NOT NULL AUTO_INCREMENT,
 name VARCHAR(100),

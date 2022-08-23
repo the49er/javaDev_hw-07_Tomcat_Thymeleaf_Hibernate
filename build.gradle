@@ -17,20 +17,20 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
 
     // https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql
-    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '8.5.13'
+    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '9.0.4'
 
 
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
 
 
     // https://mvnrepository.com/artifact/com.h2database/h2
-    implementation 'com.h2database:h2:2.1.212'
+    implementation 'com.h2database:h2:2.1.214'
 
     // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
     implementation group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '9.0.37'
@@ -44,7 +44,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha7'
 
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-    implementation 'org.hibernate.orm:hibernate-core:6.1.0.Final'
+    implementation 'org.hibernate.orm:hibernate-core:6.1.1.Final'
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation 'com.google.code.gson:gson:2.9.0'
@@ -59,7 +59,7 @@ dependencies {
     implementation group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
 
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-    implementation 'org.hibernate.orm:hibernate-core:6.1.0.Final'
+    implementation 'org.hibernate.orm:hibernate-core:6.1.1.Final'
 }
 
 test {

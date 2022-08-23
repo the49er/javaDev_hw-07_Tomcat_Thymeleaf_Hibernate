@@ -1,7 +1,7 @@
 package com.goit.javadev.database.controller.command.project;
 
-import com.goit.javadev.database.model.entity.project.Project;
-import com.goit.javadev.database.model.entity_services.ProjectDaoService;
+import com.goit.javadev.database.model.project.Project;
+import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
 import com.goit.javadev.database.controller.command.Command;
@@ -17,7 +17,7 @@ public class PostProjectCommand implements Command {
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
-        ProjectDaoService projectDaoService = new ProjectDaoService(connection);
+        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
 
         Project project = new Project();
 
@@ -33,7 +33,7 @@ public class PostProjectCommand implements Command {
         project.setCustomerId(customerId);
         project.setCompanyId(companyId);
 
-        projectDaoService.insertNewEntity(project);
+        projectDaoJDBC.insertNewEntity(project);
 
         resp.sendRedirect("/dao/project");
     }

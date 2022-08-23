@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class DataBaseInitService {
 
-    public void initDbFlyWay(Storage storage) {
+    public void initDbFlyWay(HibernateUtil hibernateUtil) {
         try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")){
             Properties properties = new Properties();
             properties.load(input);
