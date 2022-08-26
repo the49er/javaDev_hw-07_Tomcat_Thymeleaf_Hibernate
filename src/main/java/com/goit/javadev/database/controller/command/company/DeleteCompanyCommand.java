@@ -17,6 +17,6 @@ public class DeleteCompanyCommand implements Command {
 
         String id = req.getParameter("id");
         new CompanyDaoHibernate().deleteById(Long.parseLong(id));
-        resp.sendRedirect("/dao/company");
+        resp.sendRedirect("/company");
     }
 }

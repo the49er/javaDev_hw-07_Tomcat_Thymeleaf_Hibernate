@@ -61,13 +61,13 @@ public class Developer {
 
     private Set<Skill> skills = new HashSet<>();
 
-    @ManyToMany(targetEntity = Project.class, cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "developer_project",
             joinColumns = {@JoinColumn (name = "developer_id") },
             inverseJoinColumns = {@JoinColumn(name = "project_id")}
     )
-    private Set<Project> projects = new HashSet<>();
+    private Set<Project> projectsSet = new HashSet<>();
 
     public Developer(long id, String name, int age, Gender gender, int salary, int companyId) {
         this.id = id;

@@ -27,6 +27,6 @@ public class PostCompanyCommand implements Command {
 
         new CompanyDaoHibernate().insertNewEntity (company);
 
-        resp.sendRedirect("/dao/company");
+        resp.sendRedirect("/company");
     }
 }

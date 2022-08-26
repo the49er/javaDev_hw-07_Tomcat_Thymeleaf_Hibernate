@@ -5,16 +5,16 @@
     <title>Project List</title>
     <style>
     body {
-        background-image: url('/dao/images/background13.jpg');
+        background-image: url('/images/background13.jpg');
     }
 
     </style>
 </head>
 <body>
-<a href="/dao/index">Main</a>
+<a href="/">Main</a>
 <div align="center">
     <h1>Project List</h1>
-    <a href="/dao/createProject">Create New Project</a>
+    <a href="/createProject">Create New Project</a>
     <br/><br/>
     <div>
         <table border="1">
@@ -35,13 +35,13 @@
                 <td th:utext="${project.customerId}">...</td>
                 <td th:utext="${project.companyId}">...</td>
                 <td>
-                    <form action="/dao/project/update" method="post"></a>
+                    <form action="/project/update" method="post"></a>
                         <input name="id" th:value="${project.id}" type="hidden">
                         <input name="date" th:value="${project.date}" type="hidden">
                         <button type="submit">Edit</button>
                     </form>
                 <td>
-                    <form action="/dao/project/delete" method="post"></a>
+                    <form action="/project/delete" method="post"></a>
                         <input name="id" th:value="${project.id}" type="hidden">
                         <button onclick="return confirm('Are you sure you want to delete the Project?');"
                                 id="btnDelete">Delete</button>

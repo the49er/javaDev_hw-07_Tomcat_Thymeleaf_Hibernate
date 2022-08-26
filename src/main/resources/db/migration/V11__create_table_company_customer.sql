@@ -1,5 +1,5 @@
 USE homework_7;
-CREATE TABLE company_customer (
+CREATE TABLE IF NOT EXISTS company_customer (
 company_id BIGINT NULL,
 customer_id BIGINT NULL,
 UNIQUE (company_id, customer_id),

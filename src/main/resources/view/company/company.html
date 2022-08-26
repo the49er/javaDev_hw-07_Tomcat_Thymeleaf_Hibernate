@@ -5,7 +5,7 @@
   <title>Company List</title>
   <style>
     body {
-        background-image: url('/dao/images/background13.jpg');
+        background-image: url('/images/background13.jpg');
         #background-repeat: no-repeat;
     }
 
@@ -13,10 +13,10 @@
     </style>
 </head>
 <body>
-<a href="/dao/index">Main</a>
+<a href="/">Main</a>
 <div align="center">
   <h1>Company List</h1>
-  <a href="/dao/createCompany">Create New Company</a>
+  <a href="/createCompany">Create New Company</a>
   <br/><br/>
   <div>
     <table border="1">
@@ -33,12 +33,12 @@
         <td th:utext="${company.name}">...</td>
         <td th:utext="${company.specialization}">...</td>
         <td>
-          <form action="/dao/company/update" method="post"></a>
+          <form action="/company/update" method="post"></a>
             <input name="id" th:value="${company.id}" type="hidden">
             <button type="submit">Edit</button>
           </form>
         <td>
-          <form action="/dao/company/delete" method="post"></a>
+          <form action="/company/delete" method="post"></a>
             <input name="id" th:value="${company.id}" type="hidden">
             <button onclick="return confirm('Are you sure you want to delete Company?');"
                     id="btnDelete">Delete</button>

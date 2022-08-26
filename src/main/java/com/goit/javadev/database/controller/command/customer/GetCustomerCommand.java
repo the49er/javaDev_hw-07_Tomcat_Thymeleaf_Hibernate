@@ -1,5 +1,6 @@
 package com.goit.javadev.database.controller.command.customer;
 
+import com.goit.javadev.database.model.customer.CustomerDaoHibernate;
 import com.goit.javadev.database.model.customer.CustomerDaoService;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -15,14 +16,12 @@ import java.util.Map;
 public class GetCustomerCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
         resp.setContentType("text/html");
 
         Context simpleContext = new Context(
                 req.getLocale(),
-                Map.of("customers", new CustomerDaoService(connection).getAllEntities())
+                Map.of("customers", new CustomerDaoHibernate().getAllEntities())
         );
 
         engine.process("customer/customer", simpleContext, resp.getWriter());

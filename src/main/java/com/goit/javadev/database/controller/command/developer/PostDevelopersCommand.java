@@ -33,6 +33,6 @@ public class PostDevelopersCommand implements Command {
 
         new DeveloperDaoHibernate().insertNewEntity(developer);
 
-        resp.sendRedirect("/dao/developer");
+        resp.sendRedirect("/developer");
     }
 }

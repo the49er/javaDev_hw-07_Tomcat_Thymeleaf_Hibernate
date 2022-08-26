@@ -87,7 +87,7 @@ class DeveloperDaoServiceTest {
         List<Developer> expected = List.of(developerTest1, developerTest2, developerTest3);
         developerDaoService.insertNewEntities(expected);
         List<Developer> actual = developerDaoService.getDeveloperBySpecificFieldLike("TestName");
-//        Assertions.assertEquals(expected, actual);
+        //Assertions.assertEquals(expected, actual);
     }
 
     @Test

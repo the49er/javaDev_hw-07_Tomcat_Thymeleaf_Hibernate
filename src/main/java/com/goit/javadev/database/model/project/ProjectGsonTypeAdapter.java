@@ -1,6 +1,5 @@
-package com.goit.javadev.database.model.entity_services.gson_type_adaptor;
+package com.goit.javadev.database.model.project;
 
-import com.goit.javadev.database.model.entity.project.Project;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;

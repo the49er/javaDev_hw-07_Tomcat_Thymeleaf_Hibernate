@@ -34,6 +34,6 @@ public class PutDevelopersCommand implements Command {
 
         new DeveloperDaoHibernate().updateEntityFieldsById(developer, id);
 
-        resp.sendRedirect("/dao/developer");
+        resp.sendRedirect("/developer");
     }
 }

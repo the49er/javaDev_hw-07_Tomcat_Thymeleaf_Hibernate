@@ -19,12 +19,13 @@ public class DataBaseInitService {
 
             Flyway flyway = Flyway
                     .configure()
+                    .baselineOnMigrate(true)
                     .dataSource(connectionUrl,
                                 connectionUser,
                                 connectionUserPassword)
                     .load();
-
             flyway.migrate();
+
         }catch (IOException ex){
             ex.printStackTrace();
         }

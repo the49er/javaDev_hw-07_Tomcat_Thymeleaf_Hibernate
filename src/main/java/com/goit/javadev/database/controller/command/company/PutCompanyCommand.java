@@ -28,6 +28,6 @@ public class PutCompanyCommand implements Command {
 
         new CompanyDaoHibernate().updateEntityFieldsById(company, id);
 
-        resp.sendRedirect("/dao/company");
+        resp.sendRedirect("/company");
     }
 }

@@ -1,19 +1,26 @@
 package com.goit.javadev.database.model.company;
 
+import com.goit.javadev.database.model.customer.Customer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
-@AllArgsConstructor
+import java.util.HashSet;
+import java.util.Set;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @ToString
 @Entity
@@ -29,4 +36,12 @@ public class Company{
     @Column(name = "specialization")
     String specialization;
 
+    @ManyToMany(mappedBy = "companiesSet")
+    Set<Customer> customerSet = new HashSet<>();
+
+    public Company(long id, String name, String specialization){
+        this.id = id;
+        this.name = name;
+        this.specialization = specialization;
+    }
 }

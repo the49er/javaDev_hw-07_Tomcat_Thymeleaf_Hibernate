@@ -17,6 +17,6 @@ public class DeleteDevelopersCommand implements Command {
 
         String id = req.getParameter("id");
         new DeveloperDaoHibernate().deleteById(Long.parseLong(id));
-        resp.sendRedirect("/dao/developer");
+        resp.sendRedirect("/developer");
     }
 }

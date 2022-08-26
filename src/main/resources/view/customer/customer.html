@@ -5,7 +5,7 @@
   <title>Customer List</title>
   <style>
     body {
-        background-image: url('dao/view/images/background13.jpg');
+        background-image: url('/view/images/background13.jpg');
         #background-repeat: no-repeat;
     }
 
@@ -13,10 +13,10 @@
     </style>
 </head>
 <body>
-<a href="/dao/index">Main</a>
+<a href="/">Main</a>
 <div align="center">
   <h1>Customer List</h1>
-  <a href="/dao/createCustomer">Create New Customer</a>
+  <a href="/createCustomer">Create New Customer</a>
   <br/><br/>
   <div>
     <table border="1">
@@ -33,12 +33,12 @@
         <td th:utext="${customer.name}">...</td>
         <td th:utext="${customer.businessSphere}">...</td>
         <td>
-          <form action="/dao/customer/update" method="post"></a>
+          <form action="/customer/update" method="post"></a>
             <input name="id" th:value="${customer.id}" type="hidden">
             <button type="submit">Edit</button>
           </form>
         <td>
-          <form action="/dao/customer/delete" method="post"></a>
+          <form action="/customer/delete" method="post"></a>
             <input name="id" th:value="${customer.id}" type="hidden">
             <button onclick="return confirm('Are you sure you want to delete Customer?');"
                     id="btnDelete">Delete</button>

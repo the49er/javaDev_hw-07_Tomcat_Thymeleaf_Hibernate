@@ -1,5 +1,6 @@
 package com.goit.javadev.database.controller.command.project;
 
+import com.goit.javadev.database.model.project.ProjectDaoHibernate;
 import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -17,7 +18,7 @@ public class DeleteProjectCommand implements Command {
         Connection connection = storage.getConnection();
 
         String id = req.getParameter("id");
-        new ProjectDaoJDBC(connection).deleteById(Long.parseLong(id));
-        resp.sendRedirect("/dao/project");
+        new ProjectDaoHibernate().deleteById(Long.parseLong(id));
+        resp.sendRedirect("/project");
     }
 }

@@ -1,5 +1,6 @@
 package com.goit.javadev.database.controller.command.customer;
 
+import com.goit.javadev.database.model.customer.CustomerDaoHibernate;
 import com.goit.javadev.database.model.customer.CustomerDaoService;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -19,7 +20,7 @@ public class UpdateCustomer implements Command {
         Storage storage = Storage.getInstance();
         Connection connection = storage.getConnection();
 
-        CustomerDaoService customerDaoService = new CustomerDaoService(connection);
+        CustomerDaoHibernate customerDaoHibernate = new CustomerDaoHibernate();
 
         String id = req.getParameter("id");
 
@@ -27,8 +28,8 @@ public class UpdateCustomer implements Command {
                 req.getLocale(),
                 Map.of(
                         "id", id,
-                        "customer",customerDaoService.getEntityById(Long.parseLong(id)),
-                        "maxIdCustomer", customerDaoService.getMaxId()
+                        "customer",customerDaoHibernate.getEntityById(Long.parseLong(id)),
+                        "maxIdCustomer", customerDaoHibernate.getMaxId()
                 )
         );
 

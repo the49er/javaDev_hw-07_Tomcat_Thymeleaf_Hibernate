@@ -1,6 +1,7 @@
 package com.goit.javadev.database.controller.command.project;
 
 import com.goit.javadev.database.controller.command.Command;
+import com.goit.javadev.database.model.project.ProjectDaoHibernate;
 import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -15,14 +16,12 @@ import java.util.Map;
 public class GetProjectsCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
         resp.setContentType("text/html");
 
         Context simpleContext = new Context(
                 req.getLocale(),
-                Map.of("projects", new ProjectDaoJDBC(connection).getAllEntities())
+                Map.of("projects", new ProjectDaoHibernate().getAllEntities())
         );
 
         engine.process("project/project", simpleContext, resp.getWriter());

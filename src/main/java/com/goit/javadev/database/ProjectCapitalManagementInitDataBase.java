@@ -31,39 +31,39 @@ public class ProjectCapitalManagementInitDataBase {
         Connection connection = storage.getConnection();
         storage.executeUpdates();
 
-        new DataBaseInitService().initDbFlyWay(HibernateUtil.getInstance());
-
-
-        //population of companies table
-        CompanyDaoJDBC companyDbService = new CompanyDaoJDBC(connection);
-        companyDbService.insertEntitiesFromJsonFile(companiesJsonFileIn);
-
-        //population of developers table
-        DeveloperDaoJDBC developerDaoService = new DeveloperDaoJDBC(connection);
-        developerDaoService.insertEntitiesFromJsonFile(developersJsonFileIn);
-
-        //population of customers table
-        CustomerDaoService customerDaoService = new CustomerDaoService(connection);
-        customerDaoService.insertEntitiesFromJsonFile(customersJsonFileIn);
-
-        //population of projects table
-        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
-        projectDaoJDBC.insertEntitiesFromJsonFile(projectsJsonFileIn);
-
-        //population of skills table
-        SkillDaoJDBC skillDaoJDBC = new SkillDaoJDBC(connection);
-        skillDaoJDBC.insertEntitiesFromJsonFile(skillsJsonFileIn);
-
-        //population of company_customer table (keys)
-        CompanyCustomerDaoJDBC companyCustomerDaoJDBC = new CompanyCustomerDaoJDBC(connection);
-        companyCustomerDaoJDBC.insertKeysFromJsonFile(compCustomerKeysJsonFileIn);
-
-        //population of developer_project table (keys)
-        DeveloperProjectDaoJDBC developerProjectDaoJDBC = new DeveloperProjectDaoJDBC(connection);
-        developerProjectDaoJDBC.insertKeysFromJsonFile(devProjectKeysJsonFileIn);
-
-        //population of developer_skill table (keys)
-        DeveloperSkillDaoJDBC developerSkillDaoJDBC = new DeveloperSkillDaoJDBC(connection);
-        developerSkillDaoJDBC.insertKeysFromJsonFile(devSkillKeysJsonFileIn);
+//        new DataBaseInitService().initDbFlyWay(HibernateUtil.getInstance());
+//
+//
+//        //population of companies table
+//        CompanyDaoJDBC companyDbService = new CompanyDaoJDBC(connection);
+//        companyDbService.insertEntitiesFromJsonFile(companiesJsonFileIn);
+//
+//        //population of developers table
+//        DeveloperDaoJDBC developerDaoService = new DeveloperDaoJDBC(connection);
+//        developerDaoService.insertEntitiesFromJsonFile(developersJsonFileIn);
+//
+//        //population of customers table
+//        CustomerDaoService customerDaoService = new CustomerDaoService(connection);
+//        customerDaoService.insertEntitiesFromJsonFile(customersJsonFileIn);
+//
+//        //population of projects table
+//        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
+//        projectDaoJDBC.insertEntitiesFromJsonFile(projectsJsonFileIn);
+//
+//        //population of skills table
+//        SkillDaoJDBC skillDaoJDBC = new SkillDaoJDBC(connection);
+//        skillDaoJDBC.insertEntitiesFromJsonFile(skillsJsonFileIn);
+//
+//        //population of company_customer table (keys)
+//        CompanyCustomerDaoJDBC companyCustomerDaoJDBC = new CompanyCustomerDaoJDBC(connection);
+//        companyCustomerDaoJDBC.insertKeysFromJsonFile(compCustomerKeysJsonFileIn);
+//
+//        //population of developer_project table (keys)
+//        DeveloperProjectDaoJDBC developerProjectDaoJDBC = new DeveloperProjectDaoJDBC(connection);
+//        developerProjectDaoJDBC.insertKeysFromJsonFile(devProjectKeysJsonFileIn);
+//
+//        //population of developer_skill table (keys)
+//        DeveloperSkillDaoJDBC developerSkillDaoJDBC = new DeveloperSkillDaoJDBC(connection);
+//        developerSkillDaoJDBC.insertKeysFromJsonFile(devSkillKeysJsonFileIn);
     }
 }

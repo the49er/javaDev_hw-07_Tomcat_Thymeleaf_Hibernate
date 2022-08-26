@@ -1,7 +1,10 @@
 package com.goit.javadev.database.controller.command.project;
 
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
 import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.customer.CustomerDaoHibernate;
 import com.goit.javadev.database.model.customer.CustomerDaoService;
+import com.goit.javadev.database.model.project.ProjectDaoHibernate;
 import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -19,10 +22,8 @@ public class UpdateProject implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
         resp.setContentType("text/html");
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
-        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
+        ProjectDaoHibernate projectDaoHibernate = new ProjectDaoHibernate();
 
         String id = req.getParameter("id");
         LocalDate date = LocalDate.parse(req.getParameter("date"));
@@ -31,10 +32,10 @@ public class UpdateProject implements Command {
                 req.getLocale(),
                 Map.of(
                         "id", id,
-                        "project", projectDaoJDBC.getEntityById(Long.parseLong(id)),
-                        "maxIdCompany", new CompanyDaoJDBC(connection).getMaxId(),
-                        "maxIdCustomer", new CustomerDaoService(connection).getMaxId(),
-                        "maxIdProject", projectDaoJDBC.getMaxId(),
+                        "project", projectDaoHibernate.getEntityById(Long.parseLong(id)),
+                        "maxIdCompany", new CompanyDaoHibernate().getMaxId(),
+                        "maxIdCustomer", new CustomerDaoHibernate().getMaxId(),
+                        "maxIdProject", projectDaoHibernate.getMaxId(),
                         "date", date
                 )
         );

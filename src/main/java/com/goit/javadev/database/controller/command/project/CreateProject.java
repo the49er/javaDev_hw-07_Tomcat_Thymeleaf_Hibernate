@@ -1,7 +1,9 @@
 package com.goit.javadev.database.controller.command.project;
 
 import com.goit.javadev.database.controller.command.Command;
+import com.goit.javadev.database.model.company.CompanyDaoHibernate;
 import com.goit.javadev.database.model.company.CompanyDaoJDBC;
+import com.goit.javadev.database.model.customer.CustomerDaoHibernate;
 import com.goit.javadev.database.model.customer.CustomerDaoService;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -18,14 +20,12 @@ public class CreateProject implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
         resp.setContentType("text/html");
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
         Context simpleContext = new Context(
                 req.getLocale(),
                 Map.of(
-                        "maxIdCustomer", new CustomerDaoService(connection).getMaxId(),
-                        "maxIdCompany", new CompanyDaoJDBC(connection).getMaxId(),
+                        "maxIdCustomer", new CustomerDaoHibernate().getMaxId(),
+                        "maxIdCompany", new CompanyDaoHibernate().getMaxId(),
                         "date", LocalDate.now(),
                         "dateString", LocalDate.now().toString()
                 )

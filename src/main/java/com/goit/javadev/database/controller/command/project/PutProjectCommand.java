@@ -1,6 +1,7 @@
 package com.goit.javadev.database.controller.command.project;
 
 import com.goit.javadev.database.model.project.Project;
+import com.goit.javadev.database.model.project.ProjectDaoHibernate;
 import com.goit.javadev.database.model.project.ProjectDaoJDBC;
 import com.goit.javadev.database.feature.storage.Storage;
 import org.thymeleaf.TemplateEngine;
@@ -15,10 +16,7 @@ import java.time.LocalDate;
 public class PutProjectCommand implements Command {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse resp, TemplateEngine engine) throws IOException {
-        Storage storage = Storage.getInstance();
-        Connection connection = storage.getConnection();
 
-        ProjectDaoJDBC projectDaoJDBC = new ProjectDaoJDBC(connection);
         Project project = new Project();
 
         long id = Long.parseLong(req.getParameter("id"));
@@ -34,8 +32,8 @@ public class PutProjectCommand implements Command {
         project.setCustomerId(customerId);
         project.setCompanyId(companyId);
 
-        projectDaoJDBC.updateEntityFieldsById(project, id);
+        new ProjectDaoHibernate().updateEntityFieldsById(project, id);
 
-        resp.sendRedirect("/dao/project");
+        resp.sendRedirect("/project");
     }
 }
