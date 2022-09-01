@@ -1,5 +1,6 @@
 USE homework_7;
 
+
 INSERT INTO companies (name, specialization) VALUES
 ('Game Soft', 'Game Software'),
 ('iNet Security','iNet Security'),
@@ -25,6 +26,7 @@ INSERT INTO customers (name, business_sphere) VALUES
 ('MoneyBank', 'Banking'),
 ('BetStore', 'Gambling');
 
+
 INSERT INTO projects (name, description, date_contract, customer_id, company_id) VALUES
 ('CRM', 'Customer Relationship Management', '2021-01-24', 1, 4),
 ('ERP', 'Enterprise Resource Planning', '2021-04-12', 2, 3),
@@ -44,6 +46,32 @@ INSERT INTO skills (programming_lang, level) VALUES
 ('JavaScript', 'Junior'),
 ('JavaScript', 'Middle'),
 ('JavaScript', 'Senior');
+
+INSERT INTO company_customer (company_id, customer_id)
+VALUES
+(1, 4),
+(2, 3),
+(3, 1),
+(4, 2);
+
+INSERT INTO developer_skill (developer_id, skill_id)
+VALUES
+(3, 3),
+(3, 6),
+(4, 2),
+(4, 5),
+(1, 1),
+(1, 4),
+(2, 7),
+(2, 12),
+(5, 12),
+(5, 9),
+(6, 11),
+(7, 6),
+(7, 2),
+(8, 10),
+(9, 9),
+(10, 10);
 
 
 

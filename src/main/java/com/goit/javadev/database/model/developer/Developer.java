@@ -18,50 +18,58 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.management.ConstructorParameters;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "developers")
 public class Developer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NonNull
     private long id;
 
     @Column(name = "name")
-    String name;
+    @NonNull
+    private String name;
 
     @Column(name = "age")
-    int age;
+    @NonNull
+    private int age;
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
-    Gender gender;
+    private Gender gender;
 
     @Column(name = "salary")
-    int salary;
+    @NonNull
+    private int salary;
 
     @Column(name = "company_id")
-    int companyId;
+    private int companyId;
 
-    @ManyToMany(targetEntity = Skill.class, cascade = { CascadeType.ALL })
+    @ManyToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
     name = "developer_skill",
     joinColumns = {@JoinColumn (name = "developer_id") },
     inverseJoinColumns = {@JoinColumn(name = "skill_id")}
     )
 
-    private Set<Skill> skills = new HashSet<>();
+    private Set<Skill> skillsSet = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
             name = "developer_project",
             joinColumns = {@JoinColumn (name = "developer_id") },

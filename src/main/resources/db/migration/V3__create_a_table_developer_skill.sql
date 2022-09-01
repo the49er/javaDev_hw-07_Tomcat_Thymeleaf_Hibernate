@@ -1,12 +1,14 @@
 USE homework_7;
+DROP TABLE IF EXISTS developer_skill;
 CREATE TABLE developer_skill(
-developer_id BIGINT NULL,
-skill_id BIGINT NULL,
-UNIQUE (developer_id, skill_id),
+developer_id BIGINT,
+skill_id BIGINT,
+PRIMARY KEY (developer_id, skill_id),
 FOREIGN KEY (developer_id) REFERENCES developers(id)
-ON DELETE SET NULL,
+ON DELETE CASCADE,
 FOREIGN KEY (skill_id) REFERENCES skills(id)
-ON DELETE SET NULL
+ON DELETE CASCADE
 );
+
 
 

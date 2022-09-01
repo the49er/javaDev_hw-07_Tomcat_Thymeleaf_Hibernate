@@ -1,15 +1,11 @@
 package com.goit.javadev.database.model.skill;
 
 import com.goit.javadev.database.feature.storage.HibernateUtil;
-import com.goit.javadev.database.feature.storage.Storage;
 import com.goit.javadev.database.model.CrudEntityDaoHibernate;
-import com.goit.javadev.database.model.company.CompanyDaoJDBC;
-import com.goit.javadev.database.model.skill.Skill;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class SkillDaoHibernate implements CrudEntityDaoHibernate<Skill> {
@@ -88,30 +84,5 @@ public class SkillDaoHibernate implements CrudEntityDaoHibernate<Skill> {
         transaction.commit();
         session.close();
         return maxId;
-    }
-
-    public static void main(String[] args) {
-        SkillDaoHibernate skillDaoHibernate = new SkillDaoHibernate();
-        CompanyDaoJDBC companyDaoJDBC = new CompanyDaoJDBC(Storage.getInstance().getConnection());
-
-        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-
-        Skill skill = new Skill();
-        skill.setProgramLang(ProgramLang.JAVA);
-        skill.setSkillLevel(SkillLevel.JUNIOR);
-
-        Transaction tx = session.beginTransaction();
-        session.persist(skill);
-
-        tx.commit();
-        session.close();
-
-        //skillDaoHibernate.insertNewEntity(skill);
-        //skillDaoHibernate.updateEntityFieldsById(skill, 1);
-        //System.out.println(skillDaoHibernate.getAllEntities());
-
-        System.out.println(skillDaoHibernate.getMaxId());
-        System.out.println(skillDaoHibernate.getEntityById(skillDaoHibernate.getMaxId()));
-        //skillDaoHibernate.clearTable();
     }
 }

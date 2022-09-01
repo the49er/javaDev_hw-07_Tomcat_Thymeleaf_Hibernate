@@ -15,6 +15,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +39,7 @@ public class Company{
     String specialization;
 
     @ManyToMany(mappedBy = "companiesSet")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     Set<Customer> customerSet = new HashSet<>();
 
     public Company(long id, String name, String specialization){

@@ -3,7 +3,6 @@ package com.goit.javadev.database.model.developer;
 import com.goit.javadev.database.feature.storage.HibernateUtil;
 import com.goit.javadev.database.feature.storage.Storage;
 import com.goit.javadev.database.model.CrudEntityDaoHibernate;
-import com.goit.javadev.database.model.company.CompanyDaoJDBC;
 import com.goit.javadev.database.model.project.Project;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -91,42 +90,5 @@ public class DeveloperDaoHibernate implements CrudEntityDaoHibernate<Developer> 
         transaction.commit();
         session.close();
         return maxId;
-    }
-
-    public static void main(String[] args) {
-        DeveloperDaoHibernate developerDaoHibernate = new DeveloperDaoHibernate();
-        CompanyDaoJDBC companyDaoJDBC = new CompanyDaoJDBC(Storage.getInstance().getConnection());
-
-        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-
-        Project project = new Project();
-        project.setName("NewProject");
-        project.setDescription("Test1");
-        project.setDate(LocalDate.now());
-        project.setCustomerId(1);
-        project.setCompanyId(2);
-
-
-        Developer developer = new Developer();
-        developer.setName("newName");
-        developer.setAge(99);
-        developer.setGender(Developer.Gender.MALE);
-        developer.setSalary(50000);
-        developer.setCompanyId(5);
-
-        Transaction tx = session.beginTransaction();
-        session.persist(project);
-        session.persist(developer);
-
-        tx.commit();
-        session.close();
-
-        //developerDaoHibernate.insertNewEntity(developer);
-        //developerDaoHibernate.updateEntityFieldsById(developer, 1);
-        //System.out.println(developerDaoHibernate.getAllEntities());
-
-        System.out.println(developerDaoHibernate.getMaxId());
-        System.out.println(developerDaoHibernate.getEntityById(developerDaoHibernate.getMaxId()));
-        //developerDaoHibernate.clearTable();
     }
 }

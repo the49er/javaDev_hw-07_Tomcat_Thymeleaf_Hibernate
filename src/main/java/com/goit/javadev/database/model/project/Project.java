@@ -15,6 +15,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -49,6 +51,7 @@ public class Project {
     private int companyId;
 
     @ManyToMany(mappedBy = "projectsSet")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Developer> developersSet = new HashSet<>();
 
     public Project(long id, String name, String description, LocalDate date, int customerId, int companyId){

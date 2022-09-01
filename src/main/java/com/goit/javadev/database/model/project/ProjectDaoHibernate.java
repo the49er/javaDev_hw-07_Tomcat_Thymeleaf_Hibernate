@@ -1,15 +1,11 @@
 package com.goit.javadev.database.model.project;
 
 import com.goit.javadev.database.feature.storage.HibernateUtil;
-import com.goit.javadev.database.feature.storage.Storage;
 import com.goit.javadev.database.model.CrudEntityDaoHibernate;
-import com.goit.javadev.database.model.company.CompanyDaoJDBC;
-import com.goit.javadev.database.model.project.Project;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class ProjectDaoHibernate implements CrudEntityDaoHibernate<Project> {
@@ -91,33 +87,5 @@ public class ProjectDaoHibernate implements CrudEntityDaoHibernate<Project> {
         transaction.commit();
         session.close();
         return maxId;
-    }
-
-    public static void main(String[] args) {
-        ProjectDaoHibernate projectDaoHibernate = new ProjectDaoHibernate();
-        CompanyDaoJDBC companyDaoJDBC = new CompanyDaoJDBC(Storage.getInstance().getConnection());
-
-        Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
-
-        Project project = new Project();
-        project.setName("NewProject");
-        project.setDescription("Test1");
-        project.setDate(LocalDate.now());
-        project.setCustomerId(1);
-        project.setCompanyId(2);
-
-        Transaction tx = session.beginTransaction();
-        session.persist(project);
-
-        tx.commit();
-        session.close();
-
-        //projectDaoHibernate.insertNewEntity(project);
-        //projectDaoHibernate.updateEntityFieldsById(project, 1);
-        //System.out.println(projectDaoHibernate.getAllEntities());
-
-        System.out.println(projectDaoHibernate.getMaxId());
-        System.out.println(projectDaoHibernate.getEntityById(projectDaoHibernate.getMaxId()));
-        //projectDaoHibernate.clearTable();
     }
 }

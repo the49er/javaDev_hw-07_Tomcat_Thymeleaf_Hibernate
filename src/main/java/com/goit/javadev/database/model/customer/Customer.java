@@ -18,6 +18,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +41,8 @@ public class Customer{
     @Column(name = "business_sphere")
     private String businessSphere;
 
-    @ManyToMany(targetEntity = Company.class, cascade = { CascadeType.ALL})
+    @ManyToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
             name = "company_customer",
             joinColumns = {@JoinColumn(name = "company_id") },
