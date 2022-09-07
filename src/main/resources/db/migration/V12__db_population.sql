@@ -1,6 +1,5 @@
 USE homework_7;
 
-
 INSERT INTO companies (name, specialization) VALUES
 ('Game Soft', 'Game Software'),
 ('iNet Security','iNet Security'),

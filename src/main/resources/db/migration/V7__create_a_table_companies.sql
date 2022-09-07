@@ -1,6 +1,5 @@
 USE homework_7;
-DROP TABLE IF EXISTS companies;
-CREATE TABLE companies (
+CREATE TABLE IF NOT EXISTS companies (
 id BIGINT NOT NULL AUTO_INCREMENT,
 name VARCHAR(100),
 specialization VARCHAR(150),

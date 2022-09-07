@@ -11,7 +11,7 @@
 
         <property name="hibernate.connection.username"></property>
         <property name="hibernate.connection.password"></property>
-
+        <property name="hibernate.hbm2ddl.auto">validate</property>
         <!--<mapping resource="Developer.hbm.xml"/>-->
         <mapping class="com.goit.javadev.database.model.developer.Developer"/>
         <mapping class="com.goit.javadev.database.model.customer.Customer"/>

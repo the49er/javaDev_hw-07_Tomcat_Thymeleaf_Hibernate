@@ -1,6 +1,5 @@
 USE homework_7;
-DROP TABLE IF EXISTS developers;
-CREATE TABLE developers (
+CREATE TABLE IF NOT EXISTS developers (
 id BIGINT AUTO_INCREMENT,
 name VARCHAR(100),
 age INT,

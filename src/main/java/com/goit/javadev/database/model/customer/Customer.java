@@ -1,8 +1,7 @@
 package com.goit.javadev.database.model.customer;
 
 import com.goit.javadev.database.model.company.Company;
-import com.goit.javadev.database.model.skill.Skill;
-import jakarta.persistence.CascadeType;
+import com.goit.javadev.database.model.project.Project;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,9 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -49,6 +47,9 @@ public class Customer{
             inverseJoinColumns = {@JoinColumn(name = "customer_id")}
     )
     private Set<Company> companiesSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Project> projects;
 
     public Customer(long id, String name, String businessSphere){
         this.id = id;

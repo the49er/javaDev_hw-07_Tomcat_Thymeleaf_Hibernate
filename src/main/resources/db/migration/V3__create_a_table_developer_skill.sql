@@ -1,6 +1,5 @@
 USE homework_7;
-DROP TABLE IF EXISTS developer_skill;
-CREATE TABLE developer_skill(
+CREATE TABLE IF NOT EXISTS developer_skill(
 developer_id BIGINT,
 skill_id BIGINT,
 PRIMARY KEY (developer_id, skill_id),

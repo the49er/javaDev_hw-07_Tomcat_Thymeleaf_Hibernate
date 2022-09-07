@@ -1,6 +1,5 @@
 USE homework_7;
 
-DROP TABLE IF EXISTS skills;
 CREATE TABLE skills (
 id BIGINT AUTO_INCREMENT NOT NULL,
 programming_lang VARCHAR(50) NOT NULL,

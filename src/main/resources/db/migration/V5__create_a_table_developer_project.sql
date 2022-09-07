@@ -1,6 +1,5 @@
 USE homework_7;
-DROP TABLE IF EXISTS developer_project;
-CREATE TABLE developer_project (
+CREATE TABLE IF NOT EXISTS developer_project (
 developer_id BIGINT NULL,
 project_id BIGINT NULL,
 UNIQUE (developer_id, project_id),

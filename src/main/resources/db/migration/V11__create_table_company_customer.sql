@@ -1,5 +1,4 @@
 USE homework_7;
-DROP TABLE IF EXISTS company_customer;
 CREATE TABLE IF NOT EXISTS company_customer (
 company_id BIGINT NULL,
 customer_id BIGINT NULL,
